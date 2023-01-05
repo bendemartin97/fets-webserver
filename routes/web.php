@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\GastEntry;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $entries = GastEntry::query()->get();
+    return view('welcome', [
+        'entries' => $entries
+    ]);
+})->name('welcome');
+
+Route::post('/put-data', function (Request $request) {
+    $name = $request->input('name');
+    $message = $request->input('name');
+
+    $entry = new GastEntry();
+    $entry->name = $name;
+    $entry->message = $message;
+    $entry->save();
+
+    return to_route('welcome');
 });

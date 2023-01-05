@@ -157,9 +157,11 @@
         .ml-12 {
             margin-left: 4rem;
         }
+
         .ml-14 {
             margin-left: 5rem;
         }
+
         .-mt-px {
             margin-top: -1px
         }
@@ -402,6 +404,7 @@
                 </h1>
                 <div class="flex items-center">
                     <form action="/put-data" method="post">
+                        @csrf
                         <div class="px-6">
                             <label>
                                 <h2>Name:</h2>
@@ -419,6 +422,26 @@
                 </div>
             </div>
         </div>
+        @if(isset($entries) && !empty($entries))
+            <table class="table table-sm">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Nachricht</th>
+                    <th>Datum</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($entries as $entry)
+                    <tr>
+                        <td>{{ $entry->name }}</td>
+                        <td>{{ $entry->message }}</td>
+                        <td>{{ $entry->created_at }}</td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        @endif
     </div>
 </div>
 
