@@ -24,7 +24,7 @@ Route::get('/', function () {
 
 Route::post('/put-data', function (Request $request) {
     $name = $request->input('name');
-    $message = $request->input('name');
+    $message = $request->input('message');
 
     $entry = new GastEntry();
     $entry->name = $name;

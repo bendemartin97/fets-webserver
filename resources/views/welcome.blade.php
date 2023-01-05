@@ -414,7 +414,7 @@
                         <div class="px-6">
                             <label>
                                 <h2>Nachricht:</h2>
-                                <textarea name="nachricht"></textarea>
+                                <textarea name="message"></textarea>
                             </label>
                         </div>
                         <input class="ml-14" type="submit" value="Senden">
